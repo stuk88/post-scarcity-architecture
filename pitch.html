@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Abundance Paradox — Summary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #4a4a4a;
+      --ink-muted: #6b6b6b;
+      --rule: #c8c0b8;
+      --rule-light: #e0dbd5;
+      --cream: #faf8f5;
+      --paper: #ffffff;
+      --accent: #8b2500;
+      --accent-bg: #fdf6f3;
+      --blue: #1a4a6b;
+      --blue-bg: #f4f7fa;
+      --dark-bg: #2a2320;
+      --dark-text: #f0ece6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.78;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 28px 80px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 18px;
+    }
+    .meta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--rule);
+    }
+    .meta span { margin-right: 18px; }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    p { margin-bottom: 14px; }
+    ul { margin: 8px 0 16px 22px; }
+    li { margin: 4px 0; }
+    strong { font-weight: 600; }
+    em { font-style: italic; }
+
+    .callout {
+      background: var(--accent-bg);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 22px 0;
+      font-size: 0.96rem;
+    }
+    .callout .tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .neuro-callout {
+      background: var(--dark-bg);
+      border-left: 4px solid #5c4a3a;
+      padding: 16px 20px;
+      margin: 22px 0;
+      font-size: 0.96rem;
+      color: var(--dark-text);
+      border-radius: 0 4px 4px 0;
+    }
+    .neuro-callout .tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c49a3c;
+      margin-bottom: 4px;
+    }
+    .neuro-callout strong { color: #f5deb3; }
+
+    .blue-callout {
+      background: var(--blue-bg);
+      border-left: 4px solid var(--blue);
+      padding: 16px 20px;
+      margin: 22px 0;
+      font-size: 0.96rem;
+    }
+    .blue-callout .tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .cycle {
+      background: var(--paper);
+      border: 1px solid var(--rule-light);
+      padding: 18px 22px;
+      margin: 20px 0;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--ink-light);
+    }
+    .cycle .a { color: var(--accent); margin: 0 5px; }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--rule-light);
+      margin: 36px 0;
+    }
+
+    .footer {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule-light);
+      line-height: 1.6;
+    }
+
+    @media print {
+      body { font-size: 11pt; background: white; }
+      .page { padding: 20px; max-width: 100%; }
+      .neuro-callout { background: #333; color: #eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>The Abundance Paradox</h1>
+  <div class="subtitle">Why a productive economy destroys itself &mdash; and an architecture that doesn't</div>
+  <div class="meta">
+    <span>A. Stanislav Arshanski</span>
+    <span>April 2026</span>
+    <span>Summary &mdash; full paper linked below</span>
+  </div>
+
+  <h2>The Problem</h2>
+  <p>
+    If something is in demand, it is scarce. If it is not scarce, it loses value until there
+    is no reason to trade it. An economy that produces abundance therefore undermines its own
+    operating condition.
+  </p>
+
+  <div class="cycle">
+    Abundance <span class="a">&rarr;</span> value collapse <span class="a">&rarr;</span>
+    no incentive <span class="a">&rarr;</span> scarcity returns <span class="a">&rarr;</span>
+    incentive restored <span class="a">&rarr;</span> production <span class="a">&rarr;</span>
+    abundance <span class="a">&rarr;</span> &hellip;
+  </div>
+
+  <p>
+    The standard rebuttal is that scarcity migrates &mdash; music to concerts, food to curation,
+    information to attention. But every new domain gets targeted by production until it too
+    collapses. The domino chain stops only at <em>relative position</em>, which is zero-sum by
+    definition. You cannot produce your way out of a ranking.
+  </p>
+  <p>
+    The market already knows this. Planned obsolescence, DRM, patent reformulation, supply
+    restriction &mdash; these are not abuses. They are the system fighting its own productive
+    logic to survive. Every act of planned scarcity is an implicit confession that abundance
+    destroys the economic logic the market depends on.
+  </p>
+  <p>
+    The sharpest proof is pharmaceutical: the factory makes drugs for money, not healing. When
+    those diverge &mdash; diseases of the poor, cures less profitable than treatments, insulin
+    at $300 when it costs $5 &mdash; people die along the gradient. A system that only produces
+    what generates gradient will always let people die at the edges where gradient does not reach.
+  </p>
+
+  <hr>
+
+  <h2>The Architecture</h2>
+  <p>
+    The proposal replaces the profit gradient with a protocol-based system. Three layers:
+  </p>
+  <ul>
+    <li><strong>Protocol layer</strong> &mdash; algorithmic, immutable, handles funding flow. No humans in the loop.</li>
+    <li><strong>Metric layer</strong> &mdash; semi-immutable, updated only by supermajority. Defines what is measured.</li>
+    <li><strong>Execution layer</strong> &mdash; competing non-profit organisations, free to operate, funded through layer one based on layer two.</li>
+  </ul>
+
+  <p><strong>Funding:</strong> an automated tax on machine output, distributed via half-yearly
+    open raffle. Anyone can enter. No committee picks winners. Athenian sortition, not Silicon
+    Valley selection bias. A Completion Registry tracks outcomes &mdash; honest failure is
+    fine; fraud triggers bans and bounties.</p>
+
+  <p><strong>Consumer choice:</strong> marketing outlawed. A fact-only e-market with open peer
+    review. Multiple ranking algorithms, all transparent and auditable. Products speak through
+    data, not persuasion.</p>
+
+  <p><strong>Oversight:</strong> decentralised auditing with zero barrier to entry. Anyone can
+    form an auditing group. Anyone can investigate. Anyone can publish. Findings enter open
+    peer review. Bounties reward confirmed fraud exposure. Symmetric stakes punish false
+    accusations. The key property: corruption activates more defenders. The system is
+    antifragile &mdash; it gets stronger when attacked.</p>
+
+  <p><strong>Income:</strong> when the architecture eliminates artificial economic activity
+    (marketing, brand duplication, planned obsolescence), it also eliminates millions of jobs.
+    The solution decouples income from employment: a universal base allocation funded by
+    machine-output tax, the raffle as primary income pathway for builders, and the recognition
+    of care, education, auditing, and culture as funded production.</p>
+
+  <div class="blue-callout">
+    <div class="tag">Core Mechanism</div>
+    Capped gradient: enough differential to motivate quality and competition. Not enough to
+    incentivise corruption as a rational strategy. No death at the bottom, no capture at the top.
+  </div>
+
+  <hr>
+
+  <h2>Design for the Animal</h2>
+  <p>
+    The architecture was stress-tested against eight neurological constraints of the human
+    animal &mdash; the part most economic proposals ignore.
+  </p>
+
+  <div class="neuro-callout">
+    <div class="tag">The Hardware Problem</div>
+    Humans run on 300-million-year-old primate hardware: <strong>dual-process cognition</strong>
+    (System 1 handles 95% of decisions), <strong>dominance hierarchies</strong> (power changes
+    the brain within days), <strong>tribal bias</strong> (amygdala fires in 30ms),
+    <strong>temporal discounting</strong> (limbic beats prefrontal), <strong>status addiction</strong>
+    (dopamine circuit, same as cocaine), <strong>cognitive load limits</strong> (4&plusmn;1 items),
+    <strong>conformity pressure</strong> (dissent registers as physical pain), and a
+    <strong>meditation ceiling</strong> (population effect sizes of d&nbsp;=&nbsp;0.2&ndash;0.3).
+  </div>
+
+  <p>
+    The response is not education &mdash; it is <em>neurological judo</em>. Each drive is
+    redirected, not suppressed:
+  </p>
+  <ul>
+    <li><strong>Status addiction</strong> &rarr; redirected to verified impact. Multidimensional reputation, no single leaderboard.</li>
+    <li><strong>Tribal loyalty</strong> &rarr; used for auditing-group cohesion. Cross-group rotation prevents calcification.</li>
+    <li><strong>Conformity</strong> &rarr; countered by mandatory devil's advocate roles and anonymous preliminary filing.</li>
+    <li><strong>Dominance</strong> &rarr; channelled into competition between non-profits on quality. Mandatory rotation as neurological hygiene.</li>
+    <li><strong>Fear of loss</strong> &rarr; loss aversion works <em>for</em> the system: firing mechanisms, bans, reputation damage for dishonesty.</li>
+  </ul>
+  <p>
+    The system does not need 100% rational participants. It needs 5% vigilance within a
+    well-constrained 95% autopilot. It does not need global adoption &mdash; it runs in opt-in
+    zones at Dunbar-compatible scale. It does not need altruism &mdash; it needs selfish humans
+    responding to incentives that happen to serve the commons.
+  </p>
+
+  <hr>
+
+  <h2>What It Doesn't Solve</h2>
+  <p>
+    The paper catalogues sixteen system limits and five hard-ceiling remainders: tribes will
+    form, status games will emerge, long-term thinking stays hard, power concentrates informally,
+    and the vigilant minority will tire. Fourteen structural problems are addressed with concrete
+    mechanisms &mdash; each with its residual risk named explicitly. The architecture is not utopia.
+    It is designed to make failure modes visible, slow, and correctable rather than hidden, fast,
+    and self-reinforcing.
+  </p>
+
+  <div class="callout">
+    <div class="tag">Final Principle</div>
+    Design for the animal you have, not the angel you want. Make the right thing easy and the
+    wrong thing expensive. Wire every neurological drive into an incentive that serves the commons.
+    The goal is not to abolish scarcity. The goal is to prevent scarcity from becoming the
+    instrument by which corruption organises civilisation.
+  </div>
+
+  <div class="footer">
+    <p>
+      <strong>Full paper:</strong> <em>The Abundance Paradox: A Post-Scarcity Economic
+      Architecture</em> (v3.0, 35 sections, ~25,000 words) &mdash; covers the complete
+      argument, formal models, transition pathway, emergency protocol, founding mechanism,
+      IP governance, ecological constraints, pharmaceutical walkthrough, four adversarial
+      red-team scenarios, and the full neurological analysis with architectural adaptations.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
