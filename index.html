@@ -1235,6 +1235,53 @@
     shapes what can be built on them.
   </div>
 
+  <h3 id="s12-2">12.2 AI System Governance</h3>
+  <p>
+    The architecture relies on AI systems in three critical roles: decision-support tools
+    that present trade-offs to assembly members and consumers (Section 25.6), ranking
+    algorithms that order products in the e-marketplace, and anomaly detection systems that
+    flag patterns for auditing groups. These systems do not decide, but they shape what
+    humans see, which shapes what humans decide. An AI system that consistently ranks one
+    type of product higher, or that fails to flag a pattern of fraud, has effective veto
+    power over the information layer. This is governance by architecture, and it requires
+    governance of the architecture.
+  </p>
+  <ul>
+    <li><strong>Open source and auditable.</strong> All AI systems operating within the
+    architecture are open source. Their training data, model weights, and decision logic are
+    published and auditable by any auditing group. This is not optional; it is a protocol-layer
+    requirement. Proprietary AI systems are structurally excluded.</li>
+    <li><strong>Multiple competing implementations.</strong> No single AI system holds a
+    monopoly on any function. The e-marketplace runs multiple ranking algorithms that users
+    can switch between (Section 12). Decision-support tools have competing implementations
+    funded through the raffle. If one implementation is biased, users and auditing groups
+    can migrate to alternatives.</li>
+    <li><strong>Bias auditing as a claim type.</strong> Auditing groups can file bias claims
+    against AI systems using the same symmetric-stakes mechanism as fraud claims and metric
+    divergence claims. Evidence of systematic bias (demographic, ideological, or commercial)
+    triggers independent review. Confirmed bias requires the affected system to be corrected
+    or replaced. The three-group confirmation process applies.</li>
+    <li><strong>Human override at every decision point.</strong> AI systems present options;
+    humans choose. No AI system can execute a decision without human confirmation. This
+    applies to anomaly detection (flags, not blocks), ranking (suggests order, user can
+    re-sort), and decision-support (presents trade-offs, assembly member votes).</li>
+    <li><strong>Sortition-selected AI oversight board.</strong> A standing body, selected by
+    sortition with mandatory rotation, reviews AI system behaviour across the architecture.
+    The board has no power to direct AI development (that would be capture). It has the power
+    to require transparency, commission independent audits, and suspend systems pending
+    review. Same structural constraints as the dual-use safety board (Section 19).</li>
+  </ul>
+
+  <div class="residual">
+    <div class="residual-label">Residual Risk</div>
+    AI systems are increasingly opaque even when technically open source. Large language models
+    and deep neural networks do not have interpretable decision logic in any meaningful sense.
+    "Auditable" may mean "the code is public" without meaning "the behaviour is understandable."
+    The architecture requires interpretability research to advance faster than AI capability,
+    which is not guaranteed. The multiple-implementation requirement is the primary defence:
+    if no single system is trusted, the damage from any single biased system is contained.
+  </div>
+
   <h2 id="s13"><span class="num">13.</span> Project Tiers and Megaprojects</h2>
 
   <table class="arch-table">
@@ -2260,6 +2307,58 @@
     <div class="label">Threshold Principle</div>
     100% rational participation fails on day one. 5% vigilance within a well-constrained 95% autopilot
     can function indefinitely.
+  </div>
+
+  <h3 id="d7">26.7 The Education Layer</h3>
+  <p>
+    The education layer is referenced throughout this paper as "supplementary, not load-bearing."
+    It is time to specify what it actually is.
+  </p>
+  <p>
+    <strong>Function.</strong> The education layer has three jobs: (1) rotate the 5% vigilant
+    minority so it does not calcify into a permanent activist class, (2) maintain institutional
+    memory across generations so that people born into abundance understand why the architecture
+    exists and what it replaced, and (3) develop the cognitive skills (critical evaluation,
+    statistical reasoning, perspective-taking) that make participation in auditing, peer review,
+    and assembly deliberation effective rather than performative.
+  </p>
+  <p>
+    <strong>Structure.</strong> Education providers are non-profit organisations funded through
+    the raffle, competing on outcomes like every other organisation in the architecture. There
+    is no single education system, no central curriculum, no ministry of education. Multiple
+    competing providers offer different approaches. The metric layer measures educational
+    outcomes (not inputs): critical thinking assessments, participation rates in auditing and
+    assembly roles, longitudinal well-being indicators, and intergenerational knowledge
+    retention.
+  </p>
+  <p>
+    <strong>Ideological capture defence.</strong> The most dangerous failure mode of any
+    education system is ideological capture: the curriculum becomes propaganda for the
+    system it serves. Three structural defences: (1) multiple competing providers prevent
+    any single ideology from monopolising education, (2) the auditing infrastructure applies
+    to education providers the same way it applies to any other organisation (bias claims,
+    outcome audits, symmetric stakes), and (3) curriculum content is not prescribed by the
+    protocol or metric layer. The metric layer measures whether people can think critically,
+    not what they think. Providers that produce graduates who score well on critical thinking
+    but dissent from the architecture are succeeding, not failing.
+  </p>
+  <p>
+    <strong>Contemplative component.</strong> The "contemplative" label in the abstract refers
+    to evidence-based attention training (mindfulness, metacognition) integrated as a skill,
+    not a belief system. The meditation ceiling (Section 25.8) establishes that the effect is
+    modest (d&thinsp;=&thinsp;0.2&ndash;0.3). The architecture does not depend on it. It is
+    included because even modest improvements in self-awareness (noticing bias, pausing before
+    reacting) improve the quality of auditing and deliberation at the margin. It is one tool
+    among many, not a spiritual foundation.
+  </p>
+
+  <div class="residual">
+    <div class="residual-label">Residual Risk</div>
+    Education is the slowest-acting component of the architecture. It takes a generation to
+    show results and two generations to show failure. The metric layer can measure proxies
+    (critical thinking scores, participation rates) but cannot measure whether the population
+    genuinely understands the system it lives in until a crisis tests that understanding.
+    The first generation raised entirely within the architecture is the true test case.
   </div>
 
   <h2 id="s28"><span class="num">28.</span> Opt-In, Not Global</h2>
