@@ -1092,16 +1092,52 @@
   <p>
     The most serious objection to replacing market pricing is Hayek's: prices aggregate dispersed
     information about millions of preferences and constraints that no central planner can collect.
-    A metric layer is a weaker information aggregator than a price system. This paper does not claim
-    otherwise. The architecture's response is not to replicate the price system's information
-    density but to distribute the information function across three independent channels: the
-    metric layer (which aggregates outcome data), the e-marketplace (which aggregates consumer
-    choice and peer review), and the auditing system (which aggregates anomaly detection). None
-    of these channels is as information-rich as a functioning price system. Together, they provide
-    a slower, noisier, but less corruptible signal. Whether that signal is good enough is an
-    empirical question, not a theoretical one, which is why the architecture proposes opt-in zones
-    (Section 21) rather than global adoption: the point is to discover whether the alternative
-    information channels work, not to assume it.
+    The architecture does not attempt to replicate this information density through central
+    planning. Instead, it replaces the price signal with an evolutionary discovery process that
+    distributes the information function across four independent mechanisms.
+  </p>
+  <p>
+    <strong>Demand-side information: the e-marketplace.</strong> Consumer choice is preserved.
+    People choose products in the e-marketplace, generating revealed-preference data identical in
+    kind to market data. Gaps are visible: searches with no results, low satisfaction scores in
+    entire categories, high usage of inferior substitutes. This is the same demand signal a market
+    provides, minus the distortion from advertising and brand manipulation.
+  </p>
+  <p>
+    <strong>Supply-side information: distributed proposers.</strong> The raffle does not decide
+    what is needed. Thousands of independent proposers do, each with domain-specific local
+    knowledge. A nurse in a rural clinic knows which medical supplies are inadequate. An engineer
+    maintaining water infrastructure knows which components fail. A teacher knows which educational
+    tools are missing. The architecture lets any of them propose a project. The knowledge that
+    Hayek correctly identified as dispersed stays dispersed: it lives in the proposers, not in a
+    planning committee. The raffle provides random variation across these proposals. The completion
+    registry provides selection pressure by tracking what worked.
+  </p>
+  <p>
+    <strong>Outcome signals: metric dashboards.</strong> The metric layer publishes real-time data
+    on where outcomes are lagging: health metrics declining in a region, environmental targets
+    missed in a sector, infrastructure reliability dropping. These public "opportunity maps" are
+    signals that proposers respond to. They do not prescribe what to build; they show where the
+    problems are and let distributed actors converge on solutions.
+  </p>
+  <p>
+    <strong>Internal coordination: Coase's insight.</strong> Firms already solve the knowledge
+    problem internally through hierarchy, not prices. Inside a corporation, resources are allocated
+    by managerial decision, not by internal markets. The architecture treats each non-profit
+    organisation the same way: internal operations use whatever coordination mechanisms work best.
+    The protocol layer handles inter-organisational allocation the way the external market handles
+    inter-firm allocation in a conventional economy.
+  </p>
+  <p>
+    The result is an evolutionary loop: <em>variation</em> (raffle selects from distributed
+    proposals), <em>selection</em> (consumer choice in the e-marketplace plus metric-layer outcome
+    measurement), <em>retention</em> (the completion registry records what succeeded and builds
+    proposer reputation). This loop is slower than the price system. It does not compress all
+    information into a single number. But it also cannot be captured by a single actor, which is
+    the price system's fatal vulnerability when combined with concentrated capital. The
+    architecture trades information speed for corruption resistance. Whether that trade-off is
+    viable is testable at zone scale (Section 21), which is why the paper proposes opt-in
+    experimentation rather than global adoption.
   </p>
 
   <h4>Discovery Layer</h4>
