@@ -967,11 +967,36 @@
     threshold.
   </p>
 
+  <h4>Stability Bounds</h4>
+  <p>
+    The corruption ceiling is necessary but not sufficient. The gradient must also satisfy a
+    retention floor: <em>R<sub>max</sub></em> must exceed the expected value of emigrating to a
+    non-participating economy, adjusted for migration cost <em>C<sub>m</sub></em>. Formally:
+    <em>R<sub>max</sub> &gt; E(outside) &minus; C<sub>m</sub></em>. If the zone's maximum
+    compensation falls below what talented participants can earn elsewhere (minus the cost of
+    leaving), the system loses its most capable people.
+  </p>
+  <p>
+    The stable operating range exists when the retention floor is below the corruption ceiling:
+    <em>E(outside) &minus; C<sub>m</sub> &lt; R<sub>max</sub> &lt; T &middot; R<sub>min</sub></em>.
+    This range is not guaranteed to exist. It depends on three variables the architecture can
+    influence: <em>p<sub>d</sub></em> (detection probability, raised by auditing), <em>P</em>
+    (penalty severity, set by protocol), and <em>C<sub>m</sub></em> (migration cost, which
+    increases as the zone provides better quality of life). The range widens as the zone
+    improves: better auditing raises the ceiling, better outcomes raise the migration cost of
+    leaving. The range narrows if non-participating economies offer significantly higher
+    compensation or if the zone's quality of life stagnates. This is why competitive
+    demonstration (Phase 4) is essential: the zone must produce measurably better outcomes
+    to keep the retention floor viable.
+  </p>
+
   <div class="residual">
     <div class="residual-label">Residual Risk</div>
     Models are simplifications. Real economies have nonlinear feedback, exogenous shocks, and
-    behavioural discontinuities that no tournament model captures. The capped gradient is a
-    design heuristic, not a mathematical guarantee.
+    behavioural discontinuities that no tournament model captures. The stable range may be
+    narrow in early zones where quality-of-life advantages have not yet materialised. The
+    first zone faces the tightest constraint: it must offer enough non-monetary value (autonomy,
+    mission, quality of life) to compensate for a potentially narrow gradient range.
   </div>
 
   <h2 id="s10"><span class="num">10.</span> Algorithmic Funding Protocol</h2>
@@ -1828,6 +1853,35 @@
     function of the state. It is an economic operating system, not a political one.
   </p>
 
+  <h4>Trade Interface with Conventional Economies</h4>
+  <p>
+    The zone must trade with non-participating economies. Internally, production is
+    protocol-funded with no private capital. Externally, the zone trades like any other
+    jurisdiction: it exports goods at market prices and imports goods at market prices. The
+    difference is structural:
+  </p>
+  <ul>
+    <li><strong>Exports:</strong> goods produced by zone organisations are sold externally at
+    competitive market prices. Revenue flows to the protocol, not to private actors. The zone's
+    structural cost advantage (no marketing overhead, no IP rent, no artificial product
+    differentiation, functional competition between genuinely different designs rather than
+    brand duplication) makes its exports cheaper without subsidy.</li>
+    <li><strong>Imports:</strong> goods not produced within the zone are purchased through a
+    protocol-managed trade account. The metric layer determines import priorities based on
+    need. Auditing groups monitor trade accounts for rent-seeking by import intermediaries.</li>
+    <li><strong>Currency:</strong> the zone can use its host jurisdiction's currency or issue
+    a zone-specific medium of exchange pegged to the base allocation basket cost. Trade
+    settlement with external economies uses the host currency or standard international
+    settlement mechanisms.</li>
+  </ul>
+  <p>
+    This is structurally how state trading enterprises already operate: Norway's Equinor sells
+    oil at market prices with revenue flowing to the sovereign wealth fund. China's SOEs trade
+    internationally while operating under different internal rules. The zone is not
+    economically isolated; it is economically interfaced through a protocol-managed trade
+    layer that prevents external market logic from rewriting internal protocol rules.
+  </p>
+
   <div class="residual">
     <div class="residual-label">Residual Risk</div>
     Economic power and political power are never fully separable. An entity that controls how
@@ -2636,11 +2690,25 @@
   <p>
     Key performance indicators locked at the founding moment become outdated as conditions change.
     Goodhart&rsquo;s Law<sup><a href="#ref15">[15]</a></sup> &mdash; when a measure becomes a target, it ceases to be a good measure &mdash;
-    is not fully solvable by any known mechanism. The system must tolerate periodic metric
-    obsolescence and the political cost of updating goals.
+    is not fully solvable by any known mechanism. The 10-year decay cycle catches it eventually
+    but may be too slow.
+  </p>
+  <p>
+    The faster mechanism uses existing infrastructure: auditing groups can file a <strong>metric
+    divergence claim</strong> (the metric no longer measures what it claims to measure), using the
+    same symmetric-stakes process as regular audit claims. The claimant deposits a stake and
+    presents evidence of divergence between the metric and the outcome it is supposed to track.
+    If three independent auditing groups confirm the divergence, the metric enters emergency
+    review. Emergency review requires simple majority to adjust (not supermajority), because
+    fixing a broken measurement is a correction, not a new value judgment. The supermajority
+    requirement remains for introducing entirely new metrics. Interim adjustments expire at the
+    next decay cycle unless the new assembly reaffirms them.
   </p>
   <div class="limit">
-    <strong>Limit:</strong> Locked metrics calcify. Unlocked metrics are gameable. The 10-year decay is a compromise, not a solution.
+    <strong>Limit:</strong> Locked metrics calcify. Unlocked metrics are gameable. The 10-year
+    decay provides hard reset; the metric divergence claim provides faster correction. Neither
+    eliminates Goodhart's Law, but together they reduce the damage window from a decade to
+    months.
   </div>
 
   <h3 id="s33o">33.15 Information Asymmetry</h3>
@@ -2659,10 +2727,13 @@
     The architecture is too effective for its own employment model. If production is automated,
     marketing outlawed, planned obsolescence eliminated, and non-profit competition replaces
     brand duplication &mdash; the economy needs far fewer enterprises and far fewer workers.
-    One good water filter replaces forty competing brands. No sales force, no advertising
-    department, no IP lawyers, no retail markup chain. The productivity gains that currently
-    get absorbed by artificial churn actually reach the consumer &mdash; which means production
-    requires a fraction of the current workforce.
+    Forty artificially differentiated water filter brands (same filter, different packaging
+    and marketing) collapse to perhaps five genuinely different designs competing on
+    peer-reviewed performance in the e-marketplace. The five remain because they represent
+    real engineering differences. What disappears is the artificial multiplication: sales
+    forces, advertising departments, IP lawyers, retail markup chains. The productivity gains
+    that currently get absorbed by artificial differentiation actually reach the consumer
+    &mdash; which means production requires a fraction of the current workforce.
   </p>
   <p>
     A specific concern: essential but unglamorous infrastructure. Who builds and maintains
