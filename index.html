@@ -1135,9 +1135,14 @@
     proposer reputation). This loop is slower than the price system. It does not compress all
     information into a single number. But it also cannot be captured by a single actor, which is
     the price system's fatal vulnerability when combined with concentrated capital. The
-    architecture trades information speed for corruption resistance. Whether that trade-off is
-    viable is testable at zone scale (Section 21), which is why the paper proposes opt-in
-    experimentation rather than global adoption.
+    architecture trades information speed for corruption resistance. When speed is critical
+    for a specific good (genuine scarcity), the scarcity circuit breaker (Section 17.5)
+    temporarily permits price allocation under structural containment: scoped to the scarce
+    good, auto-closing when supply normalises, with windfall capture and doubled bounties for
+    manipulation. The architecture does not reject prices. It treats them as a contained
+    emergency tool rather than the default operating mode. Whether the evolutionary loop is
+    sufficient for normal operations is testable at zone scale (Section 21), which is why the
+    paper proposes opt-in experimentation rather than global adoption.
   </p>
 
   <h4>Discovery Layer</h4>
@@ -1353,10 +1358,16 @@
 
   <h3 id="s17-1">17.1 Activation</h3>
   <p>
-    Activation requires supermajority approval (70&ndash;90%, calibrated to severity). The
-    emergency must be defined by measurable conditions, not subjective judgment. Scope must
-    be precise: which protocols are modified, which resources redirected, which timelines apply.
-    No open-ended emergency declarations.
+    Two activation paths. <strong>Pre-authorised triggers</strong> fire automatically when the
+    architecture's own monitoring data crosses thresholds defined during peacetime by
+    supermajority. No vote is needed at crisis time; the vote happened when the thresholds
+    were set, under no pressure. <strong>Novel emergencies</strong> (scenarios no playbook
+    covers) are activated by a standing rapid-response body of 20&ndash;30 sortition-selected
+    members within hours, but a supermajority must ratify within 72 hours or the activation
+    auto-expires. In both cases, scope must be precise: which protocols are modified, which
+    resources redirected, which timelines apply. No open-ended emergency declarations. No
+    external authority (WHO, foreign government, international body) can trigger activation;
+    only the architecture's internal data and governance bodies can.
   </p>
 
   <h3 id="s17-2">17.2 Duration</h3>
@@ -1382,11 +1393,74 @@
     Bounties for exposing emergency abuse are doubled.
   </p>
 
+  <h3 id="s17-5">17.5 Scarcity Circuit Breaker</h3>
+  <p>
+    The architecture's evolutionary information loop (Section 12) is deliberately slower than
+    price signals. For most goods, this is acceptable: the quality of allocation matters more
+    than its speed. But when genuine scarcity emerges for a specific good, speed matters.
+    The scarcity circuit breaker addresses this without abandoning structural protections.
+  </p>
+  <p>
+    <strong>Trigger.</strong> The e-marketplace continuously monitors demand-to-supply ratios
+    for every good in the system. When the ratio for any specific good exceeds a threshold
+    (defined during peacetime by supermajority) for a sustained period (calibrated per good
+    category, typically 5&ndash;14 consecutive days), a temporary price channel opens
+    automatically for that good only. No vote. No declaration. The data triggers it.
+  </p>
+  <p>
+    <strong>Mechanism.</strong> During the price window, producers of the scarce good can set
+    prices and receive revenue directly, bypassing the normal protocol-funded model. This does
+    what prices are good at: it signals urgency, attracts new producers, and allocates existing
+    supply to highest-need uses rapidly.
+  </p>
+  <p>
+    <strong>Containment.</strong> Five structural limits prevent the fallback from becoming
+    permanent:
+  </p>
+  <ol>
+    <li><strong>Scoped to the specific good.</strong> The price channel opens only for the good
+    whose ratio tripped the threshold. The rest of the economy continues under the protocol.
+    No economy-wide market activation.</li>
+    <li><strong>Auto-closes.</strong> When the demand-to-supply ratio normalises below the
+    threshold for a sustained period, the price channel closes automatically. No vote to
+    extend. Closure is the default.</li>
+    <li><strong>Windfall capture.</strong> Revenue above operating cost earned through the
+    emergency price channel flows back to the protocol. Producers are compensated for the
+    speed and effort of emergency response, but cannot accumulate capital from scarcity.</li>
+    <li><strong>No capital retention.</strong> Earnings from emergency trading cannot be
+    reinvested in production capacity after the channel closes. They can be spent on
+    consumption or donated to the commons. This prevents the circuit breaker from becoming a
+    capital-accumulation loophole.</li>
+    <li><strong>Anti-manipulation.</strong> Auditing groups monitor for artificial scarcity:
+    hoarding, supply destruction, coordinated withdrawal of goods to trigger the threshold.
+    Bounties for detecting manipulation of the circuit breaker are doubled. Confirmed
+    manipulation triggers permanent bans and fraud penalties.</li>
+  </ol>
+  <p>
+    An actor attempting to game this system would need to physically reduce supply of a real
+    good for 5&ndash;14 consecutive days, under surveillance from every auditing group in the
+    system, knowing that the windfall is captured and the bounty on exposure is doubled.
+    The cost of the attack exceeds the return.
+  </p>
+
+  <div class="residual">
+    <div class="residual-label">Residual Risk</div>
+    The threshold parameters are themselves political: set too low and the price channel
+    activates too easily, creating a de facto market economy through accumulated exceptions.
+    Set too high and the system fails to respond to genuine shortages. Calibration is a
+    metric-layer parameter subject to supermajority update and mandatory review every decay
+    cycle. Getting the threshold right is an empirical problem that requires real data from
+    operating zones.
+  </div>
+
   <div class="principle">
     <div class="label">Principle</div>
     Emergencies increase transparency and constraints, not centralised power. The worse
     the crisis, the more eyes are watching and the tighter the boundaries. This is the
-    inverse of every emergency protocol in history, and that inversion is the point.
+    inverse of every emergency protocol in history, and that inversion is the point. The
+    scarcity circuit breaker extends this principle to the information problem: when the
+    architecture's own channels are too slow, prices are permitted as a temporary tool under
+    structural containment, not as a permanent alternative.
   </div>
 
   <h2 id="s18"><span class="num">18.</span> The Founding Moment</h2>
