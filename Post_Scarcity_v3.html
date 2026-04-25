@@ -1644,12 +1644,98 @@
         as open-source infrastructure. Any jurisdiction can adopt individual components without
         buying the full architecture. Modular adoption lowers the barrier to entry.
       </p>
+      <h4>Base Protocol Interface</h4>
+      <p>
+        Modular adoption requires a defined interface so components interoperate regardless of
+        adoption order. The base protocol specifies five core data types shared across all
+        components:
+      </p>
+      <ul>
+        <li><strong>Project Record:</strong> ID, proposer, scope, budget, timeline, status.</li>
+        <li><strong>Completion Record:</strong> project ID, outcome category (delivered / pivoted / honest failure / abandoned / fraud), evidence, peer reviews.</li>
+        <li><strong>Audit Claim:</strong> target, evidence, stake deposited, independent reviewer assessments, outcome.</li>
+        <li><strong>Metric Score:</strong> project ID, metric ID, measured value, methodology, validator.</li>
+        <li><strong>Participant Profile:</strong> ID, completion history, reputation dimensions (accuracy, volume, novelty, reliability).</li>
+      </ul>
+      <p>
+        Each component exposes a standard interface:
+      </p>
+      <table class="arch-table">
+        <tr>
+          <th>Component</th>
+          <th>Standalone use</th>
+          <th>Exposes to other components</th>
+        </tr>
+        <tr>
+          <td>Completion Registry</td>
+          <td>Any grant program tracks outcomes publicly</td>
+          <td>Query API: look up any proposer's track record</td>
+        </tr>
+        <tr>
+          <td>Symmetric Bounty</td>
+          <td>Any oversight body adopts stakes-based accountability</td>
+          <td>Claim API: file claims against any registered project</td>
+        </tr>
+        <tr>
+          <td>E-marketplace</td>
+          <td>Fact-only product comparison alongside existing markets</td>
+          <td>Demand signal API: aggregated search, satisfaction, and gap data</td>
+        </tr>
+        <tr>
+          <td>Raffle</td>
+          <td>Any funding body replaces committee selection</td>
+          <td>Allocation API: publishes funded projects with budgets</td>
+        </tr>
+        <tr>
+          <td>Metric Dashboard</td>
+          <td>Any institution publishes outcome data</td>
+          <td>Metric API: standardised outcome scores, queryable</td>
+        </tr>
+      </table>
+      <p>
+        All data is cryptographically signed at source, so one zone can verify another's records
+        without trusting its operators. The record format is an open specification not controlled
+        by any single implementation. Any implementation that speaks the protocol can federate
+        without permission.
+      </p>
+      <p>
+        The adoption sequence is designed so each step creates demand for the next: (1) Completion
+        Registry alone (immediate value for any grant program), (2) add Symmetric Bounty (existing
+        oversight body plugs in), (3) add Raffle (single funding body replaces committee), (4) add
+        E-marketplace (runs alongside existing markets), (5) add Metric Dashboard (connects outcomes
+        to funding), (6) full protocol (all components interoperating). No single decision point
+        controls the rollout. The pre-founding advocate's power is limited to step 1: persuading
+        one grant program to publish outcomes publicly.
+      </p>
       <h4>Phase 3: Federated Expansion (Years 3&ndash;10)</h4>
       <p>
         Multiple zones adopt compatible protocols. Interoperability is built in from the start.
         Federated zones share auditing infrastructure, completion registries, and metric standards
         while maintaining local governance autonomy.
       </p>
+      <h4>Inter-Zone Conflict Resolution</h4>
+      <p>
+        Federation creates disputes. The protocol resolves them mechanically, not politically:
+      </p>
+      <ul>
+        <li><strong>Auditing conflicts</strong> (Zone A says clean, Zone B says fraud): the three
+        freedoms are cross-zone, not zone-scoped. Any zone's auditing group can investigate any
+        other zone's projects. If findings conflict, the completion registry records both
+        assessments publicly. Proposers carrying disputed records face automatic review by a
+        third zone's auditing group. Three-way disagreement triggers a sortition-selected
+        arbitration panel drawn from uninvolved zones. The panel's ruling is binding for registry
+        purposes but expires at the next decay cycle.</li>
+        <li><strong>Metric compatibility:</strong> zones do not need identical metrics. They need
+        a translation layer. Zone A measures healthcare by life expectancy, Zone B by
+        disability-adjusted life years. The inter-zone protocol maintains a published equivalence
+        table, updated by supermajority of participating zones. Projects transferring between
+        zones carry their original metric scores plus the translated score. Disagreement about
+        equivalence is itself auditable.</li>
+        <li><strong>Registry portability:</strong> a proposer's record transfers automatically.
+        If Zone B does not recognise Zone A's completion standards, Zone B can require
+        supplementary review but cannot block transfer. This follows the Bologna Process model:
+        mutual recognition with local verification rights.</li>
+      </ul>
       <h4>Phase 4: Competitive Demonstration (Years 5&ndash;20)</h4>
       <p>
         The zones compete with traditional economies on measurable outcomes: healthcare delivery,
@@ -2694,9 +2780,16 @@
         <br><br>
         <strong>Base allocation politics.</strong> The level of the allocation becomes the most
         politically contested number in the system. Too high and it disincentivises raffle
-        participation. Too low and it creates poverty. The protocol layer should index it to
-        median living cost with mechanical adjustment &mdash; but the definition of "comfortable"
-        is inherently subjective and culturally variable.
+        participation. Too low and it creates poverty. The solution is to set a formula, not a
+        number. Base allocation equals the median consumption basket cost in the zone, calculated
+        mechanically from e-marketplace transaction data. Not surveyed, not estimated: calculated
+        from what people actually spend. The metric layer defines what goes in the basket
+        (housing, food, healthcare, transport, communication) by supermajority, subject to
+        decay-cycle review. The formula itself is protocol-level: immutable by any single actor,
+        with transparent and auditable inputs. The output adjusts mechanically every quarter.
+        No committee sets the number; the economy's own transaction data sets it. The political
+        decision is the basket contents, not the amount, and that decision is subject to the
+        same supermajority and decay constraints as every other metric-layer parameter.
       </div>
     </div>
   </div>
