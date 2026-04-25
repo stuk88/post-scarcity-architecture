@@ -623,6 +623,7 @@
     <li class="part-label">Part VII: Synthesis</li>
     <li><a href="#s34">34. Architecture Summary</a></li>
     <li><a href="#s35">35. Conclusion</a></li>
+    <li><a href="#refs">References</a></li>
   </ol>
 </nav>
 
@@ -681,6 +682,17 @@
     that produces abundance is, in the limiting case, mathematically self-defeating.
   </p>
   <p>
+    This observation has roots in Marx's analysis of overproduction crises and the tendency of
+    the rate of profit to fall.<sup><a href="#ref22">[22]</a></sup> Marx identified the contradiction:
+    capitalism's productive success undermines the conditions for its own profitability. Where
+    this paper diverges is in the proposed resolution and the formal framing. Marx's solution
+    (collective ownership) encountered the coordination problem that Soviet economics demonstrated
+    empirically. The architecture proposed here keeps the competitive gradient but caps and
+    redirects it. The formal model below treats the paradox as a gradient dynamics problem
+    rather than a labour theory of value problem, which provides tighter predictive constraints
+    at the margins.
+  </p>
+  <p>
     The standard rebuttal is that scarcity migrates. Music became digitally abundant, so its exchange value
     collapsed &mdash; but the scarce thing became live presence, exclusivity, experience. Food became industrially
     abundant &mdash; but the scarce thing became trust, quality signal, farm-to-table curation. Information became
@@ -711,11 +723,21 @@
 
   <h4>Model B: Gradient Dynamics</h4>
   <p>
-    Model the economy as a flow network. Nodes are actors. Edges carry production and consumption.
+    Model the economy as a flow network.<sup><a href="#ref23">[23]</a></sup> Nodes are actors. Edges carry production and consumption.
     Flow requires differential (gradient) between nodes, analogous to voltage in a circuit.
     If all nodes equalise &mdash; no scarcity anywhere &mdash; net flow is zero and the system halts.
     Formalise this as a directed graph where edge flow <em>f(i,j) = k &middot; (V<sub>i</sub> &minus; V<sub>j</sub>)</em>.
     When <em>V<sub>i</sub> = V<sub>j</sub></em> for all pairs, <em>f = 0</em> everywhere.
+  </p>
+  <p>
+    The flow-network framing owes a debt to Stafford Beer's cybernetic
+    economics, particularly the Viable System Model and its real-world application in Chile's
+    Project Cybersyn (1971&ndash;1973).<sup><a href="#ref23">[23]</a></sup> Beer demonstrated that modelling an
+    economy as a cybernetic system with feedback loops was operationally viable. The architecture
+    proposed later in this paper extends that insight but distributes control across three
+    structurally independent layers, whereas Beer's model relied on centralised coordination
+    through a single operations room. Cybersyn never lasted long enough to face the corruption
+    problem; this paper treats corruption resistance as a first-order design constraint.
   </p>
 
   <h2 id="s2"><span class="num">2.</span> The Domino Chain</h2>
@@ -817,7 +839,7 @@
     <li>Diseases of the poor get no research because there is no profitable market.</li>
     <li>Drugs are reformulated slightly to extend patents, not to improve efficacy.</li>
     <li>Cures are structurally less profitable than treatments &mdash; a hepatitis C cure was nearly suppressed because it destroyed a recurring revenue stream.</li>
-    <li>Insulin costs $5 to produce and $300 to buy &mdash; not because of production cost but because of what the market will bear from people who will die without it.</li>
+    <li>Insulin costs $5 to produce and $300 to buy &mdash; not because of production cost but because of what the market will bear from people who will die without it.<sup><a href="#ref18">[18]</a></sup></li>
   </ul>
   <p>
     Remove the profit motive entirely, and Soviet pharmaceutical output delivered chronic shortages,
@@ -858,7 +880,7 @@
   <p>
     Smart machines at near-zero marginal cost change the equation entirely. When a protein-folding algorithm
     can do in hours what took a lab years &mdash; AlphaFold solved fifty years of structural biology in eighteen
-    months &mdash; the bottleneck is no longer production capacity. It is direction. The question shifts from
+    months<sup><a href="#ref14">[14]</a></sup> &mdash; the bottleneck is no longer production capacity. It is direction. The question shifts from
     &ldquo;who will pay for this?&rdquo; to &ldquo;who decides what gets built?&rdquo;
   </p>
   <p>
@@ -889,6 +911,15 @@
     They compete to solve problems, to attract talent, to build track records. What they cannot do
     is extract surplus. Revenue above operating cost flows back into the protocol.
   </p>
+  <p>
+    Christian Felber's Economy for the Common Good<sup><a href="#ref24">[24]</a></sup> proposes a related
+    mechanism: a Common Good Balance Sheet that scores organisations on social and ecological outcomes
+    rather than profit. The metric layer in this architecture shares that DNA. Where it differs is
+    enforcement. Felber's model is voluntary and incentive-based (tax advantages for high-scoring
+    firms). Here, the metric layer is structurally binding, and it is separated from the funding
+    layer so that gaming one does not compromise the other. Felber's framework is a realistic
+    near-term policy proposal; this paper pursues the same logic to its structural conclusion.
+  </p>
 
   <h3>Proof of Concept</h3>
   <p>
@@ -896,7 +927,7 @@
     on non-profit competition:
   </p>
   <ul>
-    <li><strong>Linux</strong> &mdash; runs 96% of the world&rsquo;s top million servers, developed by competing organisations contributing to a shared commons.</li>
+    <li><strong>Linux</strong> &mdash; runs 96% of the world&rsquo;s top million servers,<sup><a href="#ref19">[19]</a></sup> developed by competing organisations contributing to a shared commons.</li>
     <li><strong>Apache / Nginx</strong> &mdash; serve the majority of all web traffic, maintained without profit motive.</li>
     <li><strong>Wikipedia</strong> &mdash; the largest reference work in history, produced by volunteers with reputational incentive.</li>
     <li><strong>Nordic healthcare</strong> &mdash; Denmark, Sweden, Norway deliver better outcomes at lower cost than profit-driven US healthcare. Physicians compete on reputation, not billing.</li>
@@ -949,7 +980,7 @@
   </p>
   <ol>
     <li><strong>Private funding of production is prohibited by law.</strong> No individual or entity may invest capital in a production organisation in exchange for ownership, equity, or profit share. The mechanism by which capital reproduces itself through production is severed.</li>
-    <li><strong>The fund is sourced from a tax on machine output.</strong> This tax is protocol-level and non-negotiable &mdash; encoded in the system the way transaction fees are encoded in a blockchain. It cannot be lobbied away because there is no body to lobby.</li>
+    <li><strong>The fund is sourced from a tax on machine output.</strong> This tax is protocol-level and non-negotiable &mdash; encoded in the system the way transaction fees are encoded in a blockchain. It cannot be lobbied away because there is no body to lobby.<sup><a href="#ref25">[25]</a></sup></li>
     <li><strong>Distribution follows provable impact metrics.</strong> A separate auditing system evaluates outcomes. Funding flows automatically to organisations that demonstrate measurable results against the metric layer&rsquo;s targets. No committee decides. The algorithm distributes.</li>
   </ol>
   <p>
@@ -957,6 +988,20 @@
     be acquired, merged with a private entity, or supplemented with private capital. It exists within
     the protocol or not at all. This is the architectural equivalent of a cell membrane &mdash; it defines
     what is inside the system and what is outside.
+  </p>
+  <p>
+    A note on the machine-output tax. Modern Monetary Theory<sup><a href="#ref25">[25]</a></sup> argues
+    that a sovereign currency issuer does not need tax revenue to fund spending; it needs taxes to
+    create demand for the currency and to manage inflation. From an MMT perspective, taxing automation
+    appears to discourage something we want more of. But the tax here serves a structural function,
+    not a fiscal one. Its purpose is to sever the capital reproduction loop: ensuring that surplus
+    generated by machines flows through the protocol rather than returning to private capital for
+    reinvestment. Sovereign money creation (as MMT would suggest) could accomplish the funding goal,
+    but would require a political body deciding how much to create and where to direct it, which
+    reintroduces the lobbying vulnerability the protocol layer is designed to eliminate. The
+    machine-output tax is apolitical by design: encoded at the infrastructure level, not set by
+    committee. The architecture is, however, compatible with sovereign money creation for the
+    universal base allocation specifically (Section 33.16).
   </p>
 
   <h2 id="s11"><span class="num">11.</span> The Open Raffle</h2>
@@ -1552,17 +1597,28 @@
 
   <h2 id="s25"><span class="num">25.</span> Eight Neurological Constraints</h2>
   <p>
-    The following constraints are not cultural. They are not educational failures. They are hardware
-    specifications of the primate brain, observable across cultures, measurable with fMRI and hormonal
-    assays, and consistent across centuries of recorded behaviour. Each one must be addressed by the
-    architecture &mdash; not assumed away.
+    The following constraints are not cultural. They are not educational failures. They are
+    observable tendencies of the primate brain, measurable with fMRI and hormonal assays, and
+    consistent in direction across cultures and centuries of recorded behaviour. Each one must be
+    addressed by the architecture &mdash; not assumed away.
+  </p>
+  <p>
+    A methodological note: neuroscience findings vary in robustness. Some claims below (dual-process
+    cognition, temporal discounting, social pain from exclusion) rest on well-replicated research.
+    Others (specific conformity percentages, the precise timeline of power-induced neural changes,
+    the dopamine-status analogy) are supported by real studies but involve simplification or draw on
+    research with variable replication records. The architectural argument does not depend on any
+    specific effect size being exact. It depends on the general pattern: humans exhibit predictable
+    biases toward tribalism, status-seeking, short-term thinking, and conformity. Those patterns
+    are robust even where the precise numbers are debated. The design principle throughout is
+    conservative: assume the worst-case behavioural tendency and build accordingly.
   </p>
 
   <h3 id="n1">25.1 Dual-Process Cognition</h3>
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    <strong>System 1</strong> (Kahneman): fast, automatic, pattern-matching. Handles approximately 95% of
+    <strong>System 1</strong> (Kahneman)<sup><a href="#ref1">[1]</a></sup>: fast, automatic, pattern-matching. Handles approximately 95% of
     daily decisions. <strong>System 2</strong>: slow, deliberate, sequential. Consumes roughly 20% of the
     body&rsquo;s glucose despite the brain comprising only ~2% of body mass. Fatigues measurably within hours
     of sustained engagement.
@@ -1584,10 +1640,12 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    Serotonin and testosterone regulate dominance behaviour across all vertebrates. Lobsters &mdash; 350
-    million years diverged from humans &mdash; use the same neurochemical circuitry. Occupying a position
-    of power causes measurable brain changes within days: reduced mirror-neuron activity (diminished
-    empathy), increased risk-taking, altered reward sensitivity.
+    Serotonin and testosterone modulate dominance behaviour across vertebrates.<sup><a href="#ref11">[11]</a></sup> Serotonergic
+    involvement in social hierarchy is evolutionarily ancient (observable even in crustaceans,
+    though the specific mechanisms differ across taxa). Occupying a position of power is associated
+    with measurable behavioural changes within days to weeks:<sup><a href="#ref8">[8]</a></sup> reduced perspective-taking,
+    increased risk-taking, and altered reward sensitivity. The neural mechanisms are still being
+    mapped, but the behavioural pattern is consistent across studies.
   </div>
   <p>
     <strong>Impact:</strong> Even small power differentials trigger the dominance system. Megaproject
@@ -1606,10 +1664,12 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    The amygdala shows differential activation to out-group faces within 30 milliseconds &mdash; faster
-    than conscious awareness. Oxytocin simultaneously promotes in-group bonding <em>and</em> out-group
-    hostility. The Robbers Cave experiment, minimal group paradigm, and fMRI studies all converge on the
-    same conclusion: tribal categorisation is automatic, pre-conscious, and neurochemically reinforced.
+    The amygdala shows rapid differential activation to unfamiliar and out-group faces, often
+    before conscious awareness (exact timing is debated, but the pre-conscious nature of the
+    response is well-established). Oxytocin simultaneously promotes in-group bonding <em>and</em>
+    out-group suspicion. The Robbers Cave experiment,<sup><a href="#ref6">[6]</a></sup> minimal group paradigm,<sup><a href="#ref7">[7]</a></sup> and fMRI
+    studies all converge: tribal categorisation is automatic, pre-conscious, and neurochemically
+    reinforced.
   </div>
   <p>
     <strong>Impact:</strong> Auditing groups will form tribal identities. Peer review will develop camps.
@@ -1627,7 +1687,7 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    Hyperbolic discounting is neurological, not cultural. In limbic-prefrontal conflict, the limbic system
+    Hyperbolic discounting is neurological, not cultural.<sup><a href="#ref12">[12]</a></sup> In limbic-prefrontal conflict, the limbic system
     wins. People reliably choose $50 now over $100 in six months. This is not irrational in evolutionary
     terms &mdash; it is biological.
   </div>
@@ -1647,10 +1707,12 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    The dopamine system responds to social status gains identically to cocaine, sugar, and sex. Ventral
-    striatum activation on approval, outperformance, and rank gain is measurable and consistent. This is
-    not a preference &mdash; it is a neurochemical addiction. Removing advertising removes one delivery
-    mechanism. It does not remove the craving.
+    Social status gains activate the dopamine-mediated reward system, including ventral striatum
+    regions that also respond to food, sex, and drugs of abuse.<sup><a href="#ref10">[10]</a></sup> This does not mean
+    status is "identical to cocaine" (a common oversimplification) but that status-seeking engages
+    the same general reward circuitry that evolution built for survival-relevant outcomes. The
+    drive is deep, automatic, and not easily overridden by conscious intention. Removing advertising
+    removes one delivery mechanism. It does not remove the underlying drive.
   </div>
   <p>
     <strong>Impact:</strong> Reputation systems become status games. Participants optimise metrics over
@@ -1669,7 +1731,7 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    Working memory capacity: 4&plusmn;1 items (Cowan, 2001). Complex governance involves many interacting
+    Working memory capacity: 4&plusmn;1 items (Cowan, 2001).<sup><a href="#ref2">[2]</a></sup> Complex governance involves many interacting
     variables simultaneously. Decision fatigue is cumulative through the day and measurable in outcome
     quality. This is a hardware specification, not an education failure.
   </div>
@@ -1689,11 +1751,14 @@
 
   <div class="neuro">
     <div class="label">Neuroscience</div>
-    Asch conformity experiments: 75% of participants conformed at least once. Milgram obedience
-    experiments: 65% administered apparently lethal shocks. Conformity activates the ventral striatum
-    (reward). Non-conformity activates the amygdala (threat). Dissent is neurologically coded as danger.
-    Social exclusion activates the same circuits as physical pain &mdash; the anterior cingulate cortex
-    does not distinguish between a broken bone and a broken social bond.
+    Asch conformity experiments: up to 75% of participants conformed at least once in the original
+    study, with replications showing substantial variation (25&ndash;75% depending on conditions and
+    culture).<sup><a href="#ref3">[3]</a></sup> Milgram obedience experiments: 65% in the original paradigm, though
+    replications range from 28% to over 90% depending on experimental setup.<sup><a href="#ref4">[4]</a></sup>
+    The precise percentages are debated; the direction is not. Conformity is neurologically
+    rewarding (ventral striatum activation) and non-conformity is aversive (amygdala activation).
+    Social exclusion activates overlapping circuits with physical pain<sup><a href="#ref9">[9]</a></sup> &mdash;
+    the anterior cingulate cortex responds to both social rejection and physical injury.
   </div>
   <p>
     <strong>Impact:</strong> The auditing system depends on dissent. The bounty mechanism requires someone
@@ -1717,7 +1782,7 @@
     10,000+ hour meditators show moderate neurological changes: reduced default-mode network activity,
     increased prefrontal cortex grey matter, reduced amygdala reactivity. Effect sizes are modest.
     Population-level mindfulness interventions produce <em>d</em>&thinsp;=&thinsp;0.2&ndash;0.3, shifting the
-    median from the 50th to roughly the 58th&ndash;62nd percentile. Real but modest &mdash; slightly better
+    median from the 50th to roughly the 58th&ndash;62nd percentile.<sup><a href="#ref13">[13]</a></sup> Real but modest &mdash; slightly better
     at noticing bias, nowhere near eliminating it.
   </div>
   <p>
@@ -1739,6 +1804,15 @@
     energy. Every neurological drive catalogued above is also a source of motivation. The task is redirection,
     not elimination.
   </p>
+  <p>
+    One further consideration: the brain is not static. Neuroplasticity means that institutional
+    environments reshape neural responses over time. People raised in high-trust cooperative
+    systems develop different default behaviours than those raised in zero-sum competitive ones.
+    The architecture does not merely work within fixed constraints; over generations, it shifts
+    the constraints themselves. This is not a reason to design optimistically (the first generation
+    gets no benefit from plasticity), but it means the system should become easier to sustain over
+    time, not harder.
+  </p>
 
   <h3 id="d1">26.1 Redirect, Don&rsquo;t Suppress</h3>
   <p>
@@ -1755,14 +1829,14 @@
   <h3 id="d2">26.2 Scaffolding Over Education</h3>
   <p>
     AI decision-support systems that present trade-offs without prescribing outcomes. Structured deliberation
-    protocols &mdash; citizen jury models tested successfully in Ireland (abortion referendum), Australia
-    (infrastructure planning), and France (climate convention). Checklists and forced cooling periods for
+    protocols &mdash; citizen jury models tested successfully in Ireland (abortion referendum),<sup><a href="#ref16">[16]</a></sup> Australia
+    (infrastructure planning), and France (climate convention).<sup><a href="#ref17">[17]</a></sup> Checklists and forced cooling periods for
     high-stakes decisions. Automated conflict-of-interest detection that flags before humans must notice.
   </p>
 
   <h3 id="d3">26.3 Small-Group Scale</h3>
   <p>
-    Dunbar&rsquo;s number: approximately 150 stable social relationships. Every governance unit in the
+    Dunbar&rsquo;s number: approximately 150 stable social relationships.<sup><a href="#ref5">[5]</a></sup> Every governance unit in the
     architecture operates at or below this threshold. Auditing groups: 5&ndash;30 members. Assemblies:
     50&ndash;150, with breakout groups for deliberation.
   </p>
@@ -2243,7 +2317,7 @@
   <h3 id="s33n">33.14 Goal Function Drift</h3>
   <p>
     Key performance indicators locked at the founding moment become outdated as conditions change.
-    Goodhart&rsquo;s Law &mdash; when a measure becomes a target, it ceases to be a good measure &mdash;
+    Goodhart&rsquo;s Law<sup><a href="#ref15">[15]</a></sup> &mdash; when a measure becomes a target, it ceases to be a good measure &mdash;
     is not fully solvable by any known mechanism. The system must tolerate periodic metric
     obsolescence and the political cost of updating goals.
   </p>
@@ -2650,6 +2724,37 @@
     This paper was developed through structured dialectical inquiry. It is a living document &mdash;
     each limit identified is an invitation for further work, not a concession of defeat.
   </p>
+
+  <hr>
+
+  <h2 id="refs">References</h2>
+  <ol class="references" style="font-size: 0.92em; line-height: 1.7;">
+    <li id="ref1"><a href="https://doi.org/10.1038/scientificamerican1111-60" target="_blank">Kahneman, D. (2011). <em>Thinking, Fast and Slow.</em> Farrar, Straus and Giroux.</a></li>
+    <li id="ref2"><a href="https://doi.org/10.1017/S0140525X01003922" target="_blank">Cowan, N. (2001). The magical number 4 in short-term memory. <em>Behavioral and Brain Sciences, 24</em>(1), 87&ndash;114.</a></li>
+    <li id="ref3"><a href="https://doi.org/10.1037/h0093718" target="_blank">Asch, S. E. (1956). Studies of independence and conformity. <em>Psychological Monographs, 70</em>(9), 1&ndash;70.</a></li>
+    <li id="ref4"><a href="https://doi.org/10.1037/h0040525" target="_blank">Milgram, S. (1963). Behavioral study of obedience. <em>Journal of Abnormal and Social Psychology, 67</em>(4), 371&ndash;378.</a></li>
+    <li id="ref5"><a href="https://doi.org/10.1016/0047-2484(92)90081-J" target="_blank">Dunbar, R. I. M. (1992). Neocortex size as a constraint on group size in primates. <em>Journal of Human Evolution, 22</em>(6), 469&ndash;493.</a></li>
+    <li id="ref6">Sherif, M. et al. (1961). <em>Intergroup Conflict and Cooperation: The Robbers Cave Experiment.</em> University of Oklahoma Book Exchange.</li>
+    <li id="ref7"><a href="https://doi.org/10.1002/ejsp.2420010202" target="_blank">Tajfel, H. et al. (1971). Social categorization and intergroup behaviour. <em>European Journal of Social Psychology, 1</em>(2), 149&ndash;178.</a></li>
+    <li id="ref8">Keltner, D. (2016). <em>The Power Paradox: How We Gain and Lose Influence.</em> Penguin Press.</li>
+    <li id="ref9"><a href="https://doi.org/10.1126/science.1089134" target="_blank">Eisenberger, N. I., Lieberman, M. D. &amp; Williams, K. D. (2003). Does rejection hurt? An fMRI study of social exclusion. <em>Science, 302</em>(5643), 290&ndash;292.</a></li>
+    <li id="ref10"><a href="https://doi.org/10.1016/j.neuron.2008.01.025" target="_blank">Zink, C. F. et al. (2008). Know your place: Neural processing of social hierarchy in humans. <em>Neuron, 58</em>(2), 273&ndash;283.</a></li>
+    <li id="ref11"><a href="https://doi.org/10.1126/science.1106477" target="_blank">Sapolsky, R. M. (2005). The influence of social hierarchy on primate health. <em>Science, 308</em>(5722), 648&ndash;652.</a></li>
+    <li id="ref12"><a href="https://doi.org/10.1126/science.1100907" target="_blank">McClure, S. M. et al. (2004). Separate neural systems value immediate and delayed monetary rewards. <em>Science, 306</em>(5695), 503&ndash;507.</a></li>
+    <li id="ref13"><a href="https://doi.org/10.1001/jamainternmed.2013.13018" target="_blank">Goyal, M. et al. (2014). Meditation programs for psychological stress and well-being. <em>JAMA Internal Medicine, 174</em>(3), 357&ndash;368.</a></li>
+    <li id="ref14"><a href="https://doi.org/10.1038/s41586-021-03819-2" target="_blank">Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. <em>Nature, 596</em>(7873), 583&ndash;589.</a></li>
+    <li id="ref15">Goodhart, C. A. E. (1984). Problems of monetary management: The U.K. experience. In <em>Monetary Theory and Practice.</em> Macmillan, 91&ndash;121.</li>
+    <li id="ref16"><a href="https://doi.org/10.1017/S0007123418000406" target="_blank">Farrell, D. M. et al. (2019). Deliberative mini-publics: Core design features. <em>British Journal of Political Science, 49</em>(3), 1065&ndash;1082.</a></li>
+    <li id="ref17"><a href="https://www.conventioncitoyennepourleclimat.fr/" target="_blank">Convention Citoyenne pour le Climat (2020). <em>Les propositions de la Convention Citoyenne pour le Climat.</em></a></li>
+    <li id="ref18"><a href="https://doi.org/10.1371/journal.pbio.0020052" target="_blank">Hubbard, T. &amp; Love, J. (2004). A new trade framework for global healthcare R&amp;D. <em>PLoS Biology, 2</em>(2), e52.</a></li>
+    <li id="ref19"><a href="https://www.linuxfoundation.org/resources/publications" target="_blank">Linux Foundation (2020). <em>Linux Kernel Development Report.</em> The Linux Foundation.</a></li>
+    <li id="ref20">Marmot, M. (2004). <em>Status Syndrome: How Your Social Standing Directly Affects Your Health and Life Expectancy.</em> Bloomsbury.</li>
+    <li id="ref21"><a href="https://doi.org/10.1146/annurev.psych.121208.131647" target="_blank">Rilling, J. K. &amp; Sanfey, A. G. (2011). The neuroscience of social decision-making. <em>Annual Review of Psychology, 62,</em> 23&ndash;48.</a></li>
+    <li id="ref22"><a href="https://www.marxists.org/archive/marx/works/1867-c1/" target="_blank">Marx, K. (1867). <em>Das Kapital, Volume I.</em> Verlag von Otto Meissner. See esp. Part III on the tendency of the rate of profit to fall and Vol. II Ch. 20&ndash;21 on overproduction cycles.</a></li>
+    <li id="ref23">Beer, S. (1972). <em>Brain of the Firm.</em> Allen Lane / Penguin Press. See also: Beer, S. (1981). <em>Brain of the Firm,</em> 2nd ed., Wiley. The Viable System Model and its application to Project Cybersyn in Chile (1971&ndash;1973).</li>
+    <li id="ref24"><a href="https://www.ecogood.org/" target="_blank">Felber, C. (2015). <em>Change Everything: Creating an Economy for the Common Good.</em> Zed Books.</a></li>
+    <li id="ref25"><a href="https://doi.org/10.1057/978-1-137-53992-2" target="_blank">Wray, L. R. (2015). <em>Modern Money Theory: A Primer on Macroeconomics for Sovereign Monetary Systems,</em> 2nd ed. Palgrave Macmillan.</a></li>
+  </ol>
 
 </div> <!-- close .main -->
 
