@@ -26,7 +26,6 @@ live site is available at:
 
 ## Deployment
 
-The site is served by GitHub Pages directly from the `main` branch root
-("Deploy from a branch" → `main` / `/ (root)`), configured under
-**Settings → Pages**. Every push to `main` is published automatically; no
-Actions workflow is required.
+The site is deployed automatically on every push to `main` via the
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow, which
+uploads the entire repository root as the Pages artifact.
