@@ -26,6 +26,7 @@ live site is available at:
 
 ## Deployment
 
-The site is deployed automatically on every push to `main` via the
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow, which
-uploads the entire repository root as the Pages artifact.
+The site is served directly from the `main` branch root by GitHub Pages
+(Settings → Pages → "Deploy from a branch", `main` / `/`). Every push to `main`
+republishes the repository root as-is; no GitHub Actions workflow is involved.
+The `.nojekyll` file disables Jekyll processing so files are served verbatim.
