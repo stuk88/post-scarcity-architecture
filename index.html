@@ -903,8 +903,21 @@
   <p>
     The separation is the architecture&rsquo;s immune system. No single layer can rewrite the others.
     The protocol cannot decide what matters. The metrics cannot redirect funds. The executors
-    cannot change the rules. Corruption requires capturing all three simultaneously &mdash; and each
-    layer is governed by a different mechanism.
+    cannot change the rules. Each layer is governed by a different mechanism, so capturing one
+    does not hand over the others.
+  </p>
+  <p>
+    The three layers are not equal in value, and the architecture should not pretend they are.
+    The metric layer is the highest-value target: it defines what counts as impact, and so it
+    shapes every funding decision downstream. An attacker who rewrote it would redirect the whole
+    economy without ever touching the protocol or the executors. Capturing the metric layer alone
+    is therefore closer to sufficient than capturing either of the others, and the stronger
+    framing (that corruption requires seizing all three at once) overstates the protection. The
+    accurate claim is narrower. The layer worth capturing is also the hardest and slowest to move:
+    changes require a standing supermajority, expire on a ten-year decay, and can be challenged
+    through the metric divergence claim (Section 34.14) the moment a measure drifts from the
+    outcome it tracks. What defends the system is not that the metric layer is one of three, but
+    that seizing it is expensive, public, and reversible on a fixed clock.
   </p>
 
   <h2 id="s9"><span class="num">9.</span> Non-Profit Machine Governance</h2>
@@ -1000,6 +1013,15 @@
     narrow in early zones where quality-of-life advantages have not yet materialised. The
     first zone faces the tightest constraint: it must offer enough non-monetary value (autonomy,
     mission, quality of life) to compensate for a potentially narrow gradient range.
+    <br><br>
+    The retention floor is also legible to the people it constrains. Once the stability condition
+    is written down, organised skilled labour can read it too: a credible threat of coordinated
+    exit forces <em>R<sub>max</sub></em> upward toward <em>E(outside)</em>, because the system is
+    formally committed to keeping talent from leaving. The same inequality that guarantees
+    retention hands a bargaining lever to any group large enough to make the exit threat
+    believable. Nothing in the tournament model prevents this. It is bounded only by the cost of
+    coordinating a mass exit and by the migration cost <em>C<sub>m</sub></em>, which rises as the
+    zone becomes a place worth staying in.
   </div>
 
   <h2 id="s10"><span class="num">10.</span> Algorithmic Funding Protocol</h2>
@@ -1424,6 +1446,69 @@
     that credible but uncertain claims can still be raised without existential risk to the claimant.
   </div>
 
+  <h3 id="s15-2">15.2 Collusion and Independence</h3>
+  <p>
+    Symmetric stakes assume the auditor and the target are opponents. The stake punishes an
+    accusation that turns out false, which disciplines an auditor who attacks. It does nothing
+    when the auditor and the target cooperate, because cooperation produces no false accusation to
+    penalise. This is the blind spot in Section 15.1, and it inverts the mechanism: the same
+    process that makes adversarial auditing safe makes collusive auditing profitable.
+  </p>
+  <p>
+    Three cooperative attacks matter:
+  </p>
+  <ul>
+    <li><strong>Split bounty.</strong> A producer commits a small, pre-arranged infraction. A
+    friendly auditor &ldquo;discovers&rdquo; it, collects the bounty, and returns a share. Both
+    sides profit, and the ledger records a clean catch.</li>
+    <li><strong>Reputation laundering.</strong> A coordinated weak claim is filed and resolves
+    &ldquo;unconfirmed, good-faith.&rdquo; The target is now on record as audited and clean, which
+    inoculates it against the next genuine claim. The good-faith outcome, designed to protect
+    honest but mistaken auditors, becomes a certificate the target arranges on purpose.</li>
+    <li><strong>Confirmation cartel.</strong> Track-record weighting (Section 32, Attack 4) rewards
+    patience. An operator builds three or more auditing groups over several years on honest small
+    audits, accumulating the trust weight that makes their confirmations count, then activates them
+    together as the &ldquo;three independent groups&rdquo; that certify each other&rsquo;s claims.
+    The requirement in Section 15.1 asserts independence; it does not prove it.</li>
+  </ul>
+  <p>
+    Independence has to be produced by the protocol, not assumed of the participants. Four
+    mechanisms narrow the gap:
+  </p>
+  <ol>
+    <li><strong>Random assignment of confirmers.</strong> The groups that review a bounty claim are
+    drawn by the protocol from the eligible pool, not chosen by the filer. An attacker cannot route
+    a claim to friendly confirmers if the protocol decides who confirms.</li>
+    <li><strong>Correlation monitoring.</strong> Confirmation histories are public and
+    machine-readable. Groups whose confirmations cluster (repeatedly certifying the same targets,
+    or each other, more than chance allows) lose confirmation weight automatically. Independence is
+    measured from behaviour over time, not declared at formation.</li>
+    <li><strong>Anti-clustering stake.</strong> The stake scales with correlation. A confirmation
+    that runs with an established cluster carries a larger stake and a smaller reward than one that
+    breaks from it, which prices out the cartel strategy without forbidding any group from filing.</li>
+    <li><strong>Collusion is itself bountiable.</strong> Exposing a collusive pair pays from the
+    same fund as exposing fraud. The dissident-first rule (Section 16) applies recursively: the
+    auditors are audited by people with an incentive to catch them, and the reward for catching a
+    captured auditor exceeds that auditor&rsquo;s share of the original scheme.</li>
+  </ol>
+
+  <div class="principle">
+    <div class="label">Principle</div>
+    Adversarial stakes discipline attackers; only measured independence disciplines collaborators.
+    A system that checks whether its auditors <em>disagree</em> often enough is checking the wrong
+    thing. It must check whether they agree in patterns that honest, independent work would not
+    produce.
+  </div>
+
+  <div class="residual">
+    <div class="residual-label">Residual Risk</div>
+    Correlation monitoring catches groups that collude at scale or repeatedly. It is weak against a
+    single, patient, one-shot cartel that colludes once on a high-value target and never reuses the
+    same groups. Random assignment shrinks the odds of drawing an all-captured panel but cannot
+    drive them to zero while any captured groups remain in the pool. The defence raises the cost
+    and the detection probability of collusion; it does not make collusion impossible.
+  </div>
+
   <h2 id="s16"><span class="num">16.</span> Dissident-First Oversight</h2>
   <p>
     The opening auditing group in any domain must be structurally open to people who are
@@ -1541,11 +1626,22 @@
     manipulation unprofitable is structural design.</li>
   </ol>
   <p>
-    The only remaining attack vector is external: an actor who holds resources outside the
-    architecture benefits from scarcity driving demand toward non-participating jurisdictions.
-    This is a variant of the capital flight problem addressed in Section 22 (asymptotic
-    dilution) and mitigated by federated expansion (Section 21, Phase 3): as more zones
-    adopt compatible protocols, the number of profitable exits shrinks.
+    Two attack vectors survive the containment, and both sit outside the profit logic the five
+    constraints neutralise. The first is external profit: an actor who holds resources outside the
+    architecture benefits from scarcity driving demand toward non-participating jurisdictions. This
+    is a variant of the capital flight problem addressed in Section 22 (asymptotic dilution) and
+    mitigated by federated expansion (Section 21, Phase 3): as more zones adopt compatible
+    protocols, the number of profitable exits shrinks.
+  </p>
+  <p>
+    The second is sabotage. Constraint 5 makes manipulation self-defeating only for an attacker who
+    wants to profit. An ideological or state adversary who wants the architecture to fail does not
+    need the windfall, and windfall capture does not deter it. Repeatedly forcing a good into the
+    price channel manufactures visible instability and erodes trust regardless of who keeps the
+    revenue. The profit-neutralising defences do not touch this motive. What limits it is detection
+    of the repeated-triggering pattern and the same federated redundancy that blunts external
+    profiteering: a good that is scarce in one zone and abundant in a compatible neighbour is hard
+    to weaponise.
   </p>
 
   <div class="residual">
@@ -2623,6 +2719,30 @@
     rise and fake groups sink. Expensive and self-limiting.
   </p>
 
+  <h4>Attack 5: Auditor Collusion Cartel</h4>
+  <p>
+    <strong>Attack:</strong> Instead of attacking a target, an operator builds three auditing
+    groups over several years on honest small audits, earns the track-record weight that makes
+    their confirmations count, then uses them to certify one another. A friendly producer commits a
+    minor pre-arranged infraction; a captured group &ldquo;catches&rdquo; it; the other two
+    confirm; the bounty is collected and split. Alternatively the same groups file weak, good-faith
+    claims that resolve &ldquo;unconfirmed,&rdquo; laundering the target&rsquo;s record as
+    audited-clean before a real audit can land.
+  </p>
+  <p>
+    <strong>Defence:</strong> Confirmers are assigned by the protocol, not chosen by the filer.
+    Confirmation histories are public, and clustering (groups that repeatedly confirm the same
+    targets or each other) automatically decays confirmation weight and raises the stake required
+    to confirm. Exposing a collusive pair pays from the same bounty fund as exposing fraud, so the
+    cartel is a standing target for every group outside it (Section 15.2).
+  </p>
+  <p>
+    <strong>Outcome:</strong> A single one-shot collusion on one high-value target can succeed
+    before detection. Repeated or scaled collusion produces the correlation signature that costs
+    the groups their weight and invites a counter-bounty. The strategy does not compound: each
+    reuse raises the odds of exposure.
+  </p>
+
   <div class="residual">
     <div class="residual-label">Residual</div>
     None of these defences guarantee zero damage. What they guarantee is that damage is bounded,
@@ -2894,8 +3014,21 @@
     mechanism. Mechanical screening is both the primary defence and a potential corruption surface.
     The system requires continuous statistical monitoring and periodic mechanism audits.
   </p>
+  <p>
+    A quieter failure mode needs no coordination at all. Once the raffle is the primary income
+    pathway for builders (Section 34.16) and the micro tier clears on a completion registry alone
+    (Section 13), the rational move for an individual is to fire off cheap proposals, do the minimum
+    that registers as &ldquo;delivered,&rdquo; and treat the proceeds as gig income on top of the
+    base allocation. Each instance is legitimate. No shell ring exists, no metadata correlates, and
+    the cluster-detection defences that flag coordinated submissions find nothing, because there is
+    nothing coordinated to find. The drain is the sum of millions of individually honest choices,
+    bounded by the quality bar of the micro tier rather than by any anti-fraud check.
+  </p>
   <div class="limit">
-    <strong>Limit:</strong> The raffle is robust against individual gaming but vulnerable to sophisticated, coordinated, evolving attacks. Defence must evolve faster than offence.
+    <strong>Limit:</strong> The raffle is robust against coordinated gaming and exposed to two
+    opposite failures: sophisticated, evolving attacks that must be out-run, and uncoordinated
+    low-effort extraction that no anti-collusion tool can see. The first is a detection problem;
+    the second is a calibration problem in the micro-tier completion bar.
   </div>
 
   <h3 id="s33k">34.11 Free Riders</h3>
@@ -2923,6 +3056,18 @@
     Outlawing marketing does not eliminate social influence, charisma, tribalism, or emotional
     manipulation. Humans are persuadable animals. The education layer is a partial defence, but
     no structural mechanism can fully immunise against rhetorical skill deployed in bad faith.
+  </p>
+  <p>
+    The dangerous version is not one persuasive actor but a path that runs through the protocol
+    legally. The architecture permits ritual and narrative (Section 26.4) and adjudicates the
+    narrative-versus-marketing line with peer review, which is itself a capturable layer. A faction
+    that captures the narrative infrastructure can manufacture the supermajority the metric layer
+    requires, rewrite what counts as impact, and redirect funds without breaking a rule.
+    Self-selection into the zone (Section 28) and the neuroplastic alignment the design relies on
+    (Section 26) can supply a consensus-primed population rather than resist one. The charismatic
+    faction does not defeat the rules; it uses them. This is the metric-capture path of Section 8
+    approached from the human side, and it is why the metric layer&rsquo;s supermajority is a
+    softer lock than its formal threshold suggests.
   </p>
   <div class="limit">
     <strong>Limit:</strong> Structural defences work against institutional manipulation. Interpersonal and charismatic manipulation operates below the protocol layer.
@@ -3103,6 +3248,18 @@
         No committee sets the number; the economy's own transaction data sets it. The political
         decision is the basket contents, not the amount, and that decision is subject to the
         same supermajority and decay constraints as every other metric-layer parameter.
+        <br><br>
+        <strong>Oracle manipulation.</strong> Calculating the number instead of voting on it moves
+        the contest rather than ending it. A formula that reads the median basket cost from
+        transaction data is only as honest as the transactions. Coordinated purchasing, wash
+        trades, and inflated intra-group sales move the median, and the direction almost everyone
+        prefers is up: a higher basket cost means a higher allocation for all. Upward manipulation
+        is therefore popular and self-reinforcing, which is the hardest abuse to prosecute, because
+        the participants are doing nothing but transacting. &ldquo;Calculated, not surveyed&rdquo;
+        does not remove the tampering surface; it relocates it from a committee to the transaction
+        feed. The input needs the monitoring the raffle already gets: outlier detection on
+        transaction patterns, a trimmed rather than a raw median, and standing auditor access to
+        the feed that sets the number.
       </div>
     </div>
   </div>
