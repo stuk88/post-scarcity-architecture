@@ -30,6 +30,7 @@ interface ICompletionRegistry {
     event OutcomeFinalized(uint256 indexed projectId, Outcome outcome);
     event CooldownApplied(bytes32 indexed orgId, uint256 until);
     event FraudBountyActivated(uint256 indexed projectId, bytes32 indexed orgId);
+    event AbandonmentAutoBan(bytes32 indexed orgId, uint256 count);
 
     // ── Mutators ──
 
@@ -55,6 +56,9 @@ interface ICompletionRegistry {
 
     /// @notice Whether an org is banned (post-fraud)
     function isBanned(bytes32 orgId) external view returns (bool);
+
+    /// @notice Number of times an org has been finalized as Abandoned
+    function abandonmentCount(bytes32 orgId) external view returns (uint256);
 
     /// @notice Total projects registered
     function projectCount() external view returns (uint256);

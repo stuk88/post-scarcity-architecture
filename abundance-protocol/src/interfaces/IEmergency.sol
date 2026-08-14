@@ -31,6 +31,7 @@ interface IEmergency {
     event TriggerTerminated(bytes32 indexed triggerId, uint256 panelId);
     event ScarcityBreakerActivated(bytes32 indexed goodId, uint256 priceChannel);
     event ScarcityBreakerDeactivated(bytes32 indexed goodId);
+    event ScarcityBreakerNormalized(bytes32 indexed goodId, uint256 normalizedValue);
 
     // ── Mutators ──
 
@@ -47,10 +48,13 @@ interface IEmergency {
     function terminateEarly(bytes32 triggerId, uint256 panelId) external;
 
     /// @notice Activate a scarcity circuit breaker for a specific good (requires panel approval)
-    function activateScarcityBreaker(bytes32 goodId, uint256 priceChannel, uint256 panelId) external;
+    function activateScarcityBreaker(bytes32 goodId, uint256 priceChannel, bytes32 metricKey, uint256 normalizationThreshold, uint256 panelId) external;
 
     /// @notice Deactivate a scarcity breaker when ratio normalises (requires panel approval)
     function deactivateScarcityBreaker(bytes32 goodId, uint256 panelId) external;
+
+    /// @notice Permissionless auto-close when demand/supply ratio normalizes below threshold
+    function normalizeScarcityBreaker(bytes32 goodId) external;
 
     // ── Views ──
 

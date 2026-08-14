@@ -20,6 +20,8 @@ contract Emergency is IEmergency {
         bool active;
         uint256 priceChannel;
         uint256 activatedAt;
+        bytes32 metricKey;
+        uint256 normalizationThreshold;
     }
 
     mapping(bytes32 => ScarcityBreaker) internal _scarcityBreakers;
@@ -37,6 +39,7 @@ contract Emergency is IEmergency {
     error TriggerAlreadyExists(bytes32 triggerId);
     error ScarcityBreakerAlreadyActive(bytes32 goodId);
     error ScarcityBreakerNotActive(bytes32 goodId);
+    error ScarcityNotNormalized(bytes32 goodId, uint256 currentValue, uint256 threshold);
     error NotDeployer();
 
     address internal immutable _deployer;
@@ -142,7 +145,13 @@ contract Emergency is IEmergency {
         emit TriggerTerminated(triggerId, panelId);
     }
 
-    function activateScarcityBreaker(bytes32 goodId, uint256 priceChannel, uint256 panelId) external {
+    function activateScarcityBreaker(
+        bytes32 goodId,
+        uint256 priceChannel,
+        bytes32 metricKey,
+        uint256 normalizationThreshold,
+        uint256 panelId
+    ) external {
         (bool resolved, bool approved) = sortition.isResolved(panelId);
         if (!resolved || !approved) revert PanelNotApproved(panelId);
 
@@ -151,7 +160,13 @@ contract Emergency is IEmergency {
         if (panel.purpose != expectedPurpose) revert WrongPanelPurpose();
 
         if (_scarcityBreakers[goodId].active) revert ScarcityBreakerAlreadyActive(goodId);
-        _scarcityBreakers[goodId] = ScarcityBreaker({active: true, priceChannel: priceChannel, activatedAt: block.number});
+        _scarcityBreakers[goodId] = ScarcityBreaker({
+            active: true,
+            priceChannel: priceChannel,
+            activatedAt: block.number,
+            metricKey: metricKey,
+            normalizationThreshold: normalizationThreshold
+        });
         emit ScarcityBreakerActivated(goodId, priceChannel);
     }
 
@@ -166,6 +181,19 @@ contract Emergency is IEmergency {
         if (!_scarcityBreakers[goodId].active) revert ScarcityBreakerNotActive(goodId);
         _scarcityBreakers[goodId].active = false;
         emit ScarcityBreakerDeactivated(goodId);
+    }
+
+    function normalizeScarcityBreaker(bytes32 goodId) external {
+        ScarcityBreaker storage sb = _scarcityBreakers[goodId];
+        if (!sb.active) revert ScarcityBreakerNotActive(goodId);
+
+        uint256 currentValue = metricRegistry.getMetric(sb.metricKey);
+        if (currentValue >= sb.normalizationThreshold) {
+            revert ScarcityNotNormalized(goodId, currentValue, sb.normalizationThreshold);
+        }
+
+        sb.active = false;
+        emit ScarcityBreakerNormalized(goodId, currentValue);
     }
 
     function isActive(bytes32 triggerId) external view returns (bool) {

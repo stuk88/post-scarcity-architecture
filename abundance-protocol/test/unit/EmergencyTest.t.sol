@@ -18,6 +18,9 @@ contract EmergencyTest is Test {
     bytes32 constant RESPONSE_ACTION = bytes32("pause_minting");
     uint256 constant DURATION = 50;
 
+    bytes32 constant SCARCITY_METRIC = bytes32("wheat_demand_supply");
+    uint256 constant SCARCITY_NORM_THRESHOLD = 150;
+
     function setUp() public {
         mockSortition = new MockSortition();
         mockMetrics = new MockMetricRegistry();
@@ -252,7 +255,7 @@ contract EmergencyTest is Test {
         mockSortition.setResolution(panelId, true, true);
         mockSortition.setPurpose(panelId, purpose);
 
-        emergency.activateScarcityBreaker(goodId, priceChannel, panelId);
+        emergency.activateScarcityBreaker(goodId, priceChannel, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId);
         assertTrue(emergency.isScarcityBreakerActive(goodId));
     }
 
@@ -264,7 +267,7 @@ contract EmergencyTest is Test {
         bytes32 activatePurpose = keccak256(abi.encode("scarcityBreaker.activate", goodId));
         mockSortition.setResolution(activatePanelId, true, true);
         mockSortition.setPurpose(activatePanelId, activatePurpose);
-        emergency.activateScarcityBreaker(goodId, 200, activatePanelId);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, activatePanelId);
 
         bytes32 deactivatePurpose = keccak256(abi.encode("scarcityBreaker.deactivate", goodId));
         mockSortition.setResolution(deactivatePanelId, true, true);
@@ -282,7 +285,7 @@ contract EmergencyTest is Test {
         bytes32 purpose = keccak256(abi.encode("scarcityBreaker.activate", goodId));
         mockSortition.setResolution(panelId1, true, true);
         mockSortition.setPurpose(panelId1, purpose);
-        emergency.activateScarcityBreaker(goodId, 200, panelId1);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId1);
 
         mockSortition.setResolution(panelId2, true, true);
         mockSortition.setPurpose(panelId2, purpose);
@@ -290,7 +293,7 @@ contract EmergencyTest is Test {
         vm.expectRevert(
             abi.encodeWithSelector(Emergency.ScarcityBreakerAlreadyActive.selector, goodId)
         );
-        emergency.activateScarcityBreaker(goodId, 300, panelId2);
+        emergency.activateScarcityBreaker(goodId, 300, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId2);
     }
 
     function testDeactivateScarcityBreakerRevertsIfNotActive() public {
@@ -312,7 +315,7 @@ contract EmergencyTest is Test {
         uint256 panelId = 500;
 
         vm.expectRevert(abi.encodeWithSelector(Emergency.PanelNotApproved.selector, panelId));
-        emergency.activateScarcityBreaker(goodId, 200, panelId);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId);
     }
 
     function testActivateScarcityBreakerRevertsWithWrongPurpose() public {
@@ -323,7 +326,7 @@ contract EmergencyTest is Test {
         mockSortition.setPurpose(panelId, bytes32("wrong"));
 
         vm.expectRevert(Emergency.WrongPanelPurpose.selector);
-        emergency.activateScarcityBreaker(goodId, 200, panelId);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId);
     }
 
     function testDeactivateScarcityBreakerRevertsWithoutPanel() public {
@@ -333,7 +336,7 @@ contract EmergencyTest is Test {
         bytes32 activatePurpose = keccak256(abi.encode("scarcityBreaker.activate", goodId));
         mockSortition.setResolution(activatePanelId, true, true);
         mockSortition.setPurpose(activatePanelId, activatePurpose);
-        emergency.activateScarcityBreaker(goodId, 200, activatePanelId);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, activatePanelId);
 
         uint256 deactivatePanelId = 501;
 
@@ -348,7 +351,7 @@ contract EmergencyTest is Test {
         bytes32 activatePurpose = keccak256(abi.encode("scarcityBreaker.activate", goodId));
         mockSortition.setResolution(activatePanelId, true, true);
         mockSortition.setPurpose(activatePanelId, activatePurpose);
-        emergency.activateScarcityBreaker(goodId, 200, activatePanelId);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, activatePanelId);
 
         uint256 deactivatePanelId = 501;
         mockSortition.setResolution(deactivatePanelId, true, true);
@@ -356,6 +359,62 @@ contract EmergencyTest is Test {
 
         vm.expectRevert(Emergency.WrongPanelPurpose.selector);
         emergency.deactivateScarcityBreaker(goodId, deactivatePanelId);
+    }
+
+    // ── Scarcity Breaker Normalization ──
+
+    function _activateBreaker(bytes32 goodId) internal {
+        uint256 panelId = 600;
+        bytes32 purpose = keccak256(abi.encode("scarcityBreaker.activate", goodId));
+        mockSortition.setResolution(panelId, true, true);
+        mockSortition.setPurpose(panelId, purpose);
+        mockMetrics.setMetric(SCARCITY_METRIC, 300);
+        emergency.activateScarcityBreaker(goodId, 200, SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD, panelId);
+    }
+
+    function testNormalizeScarcityBreaker() public {
+        bytes32 goodId = bytes32("wheat");
+        _activateBreaker(goodId);
+        assertTrue(emergency.isScarcityBreakerActive(goodId));
+
+        mockMetrics.setMetric(SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD - 1);
+        emergency.normalizeScarcityBreaker(goodId);
+        assertFalse(emergency.isScarcityBreakerActive(goodId));
+    }
+
+    function testNormalizeScarcityBreakerRevertsIfNotActive() public {
+        bytes32 goodId = bytes32("wheat");
+
+        vm.expectRevert(
+            abi.encodeWithSelector(Emergency.ScarcityBreakerNotActive.selector, goodId)
+        );
+        emergency.normalizeScarcityBreaker(goodId);
+    }
+
+    function testNormalizeScarcityBreakerRevertsIfNotNormalized() public {
+        bytes32 goodId = bytes32("wheat");
+        _activateBreaker(goodId);
+
+        mockMetrics.setMetric(SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Emergency.ScarcityNotNormalized.selector, goodId, SCARCITY_NORM_THRESHOLD, SCARCITY_NORM_THRESHOLD
+            )
+        );
+        emergency.normalizeScarcityBreaker(goodId);
+    }
+
+    function testNormalizeScarcityBreakerRevertsAboveThreshold() public {
+        bytes32 goodId = bytes32("wheat");
+        _activateBreaker(goodId);
+
+        mockMetrics.setMetric(SCARCITY_METRIC, SCARCITY_NORM_THRESHOLD + 100);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Emergency.ScarcityNotNormalized.selector, goodId, SCARCITY_NORM_THRESHOLD + 100, SCARCITY_NORM_THRESHOLD
+            )
+        );
+        emergency.normalizeScarcityBreaker(goodId);
     }
 
     // ── Invariants ──

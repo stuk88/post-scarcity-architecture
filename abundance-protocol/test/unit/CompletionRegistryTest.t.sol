@@ -359,6 +359,73 @@ contract CompletionRegistryTest is Test {
         assertEq(unspent, 200e18);
     }
 
+    // ── Abandonment Auto-Ban ──
+
+    function _abandonNTimes(bytes32 orgId, uint256 n) internal {
+        vm.startPrank(governance);
+        uint256 base = registry.projectCount();
+        for (uint256 i = 0; i < n; i++) {
+            registry.registerProject(orgId, base + i + 1, 1000e18, 3);
+            registry.finalizeOutcome(base + i, ICompletionRegistry.Outcome.Abandoned);
+            if (i < n - 1) {
+                vm.warp(block.timestamp + 181 days);
+            }
+        }
+        vm.stopPrank();
+    }
+
+    function test_abandoned_threeTimesResultsInBan() public {
+        uint256 repBefore = reputation.callCount();
+        _abandonNTimes(ORG_A, 3);
+
+        assertTrue(registry.isBanned(ORG_A), "org should be banned after 3 abandonments");
+        assertEq(registry.abandonmentCount(ORG_A), 3);
+        assertEq(reputation.callCount(), repBefore + 3, "3 reputation hits for 3 abandonments");
+    }
+
+    function test_abandoned_twoTimesNotBanned() public {
+        uint256 repBefore = reputation.callCount();
+        _abandonNTimes(ORG_A, 2);
+
+        assertFalse(registry.isBanned(ORG_A), "org should NOT be banned after 2 abandonments");
+        assertTrue(registry.isInCooldown(ORG_A), "second cooldown still active");
+        assertEq(registry.abandonmentCount(ORG_A), 2);
+        assertEq(reputation.callCount(), repBefore + 2, "2 reputation hits for 2 abandonments");
+
+        vm.warp(block.timestamp + 181 days);
+        assertFalse(registry.isInCooldown(ORG_A), "second cooldown expired");
+    }
+
+    function test_abandoned_thirdBanBlocksRegistration() public {
+        _abandonNTimes(ORG_A, 3);
+
+        vm.prank(governance);
+        vm.expectRevert("CompletionRegistry: org is banned");
+        registry.registerProject(ORG_A, 99, 1000e18, 3);
+    }
+
+    function test_abandoned_countIsolatedPerOrg() public {
+        _abandonNTimes(ORG_A, 2);
+        vm.warp(block.timestamp + 181 days);
+
+        _abandonNTimes(ORG_B, 1);
+
+        assertEq(registry.abandonmentCount(ORG_A), 2);
+        assertEq(registry.abandonmentCount(ORG_B), 1);
+        assertFalse(registry.isBanned(ORG_A), "ORG_A not banned at 2");
+        assertFalse(registry.isBanned(ORG_B), "ORG_B not banned at 1");
+    }
+
+    function test_abandoned_cooldownBoundaryExact180Days() public {
+        _registerAndFinalize(ORG_A, ICompletionRegistry.Outcome.Abandoned);
+
+        vm.warp(block.timestamp + 180 days - 1);
+        assertTrue(registry.isInCooldown(ORG_A), "still in cooldown 1s before expiry");
+
+        vm.warp(block.timestamp + 1);
+        assertFalse(registry.isInCooldown(ORG_A), "cooldown expired at exactly 180 days");
+    }
+
     function _registerAndFinalize(bytes32 orgId, ICompletionRegistry.Outcome outcome) internal {
         vm.startPrank(governance);
         registry.registerProject(orgId, 1, 1000e18, 3);

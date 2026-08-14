@@ -23,8 +23,10 @@ contract CompletionRegistry is ICompletionRegistry, ReentrancyGuard {
     mapping(uint256 => mapping(uint256 => bool)) private _trancheReleased;
     mapping(bytes32 => bool) private _banned;
     mapping(bytes32 => uint256) private _cooldownUntil;
+    mapping(bytes32 => uint256) private _abandonmentCount;
 
     uint256 public constant COOLDOWN_DURATION = 180 days;
+    uint256 public constant MAX_ABANDONMENTS = 3;
 
     modifier onlyGovernance() {
         require(msg.sender == governance, "CompletionRegistry: caller is not governance");
@@ -122,9 +124,15 @@ contract CompletionRegistry is ICompletionRegistry, ReentrancyGuard {
         } else if (outcome == Outcome.HonestFailure) {
             // No penalty, full future eligibility
         } else if (outcome == Outcome.Abandoned) {
-            _cooldownUntil[p.orgId] = block.timestamp + COOLDOWN_DURATION;
+            _abandonmentCount[p.orgId] += 1;
             reputation.updateDimension(p.orgId, "reliability", -int256(5));
-            emit CooldownApplied(p.orgId, _cooldownUntil[p.orgId]);
+            if (_abandonmentCount[p.orgId] >= MAX_ABANDONMENTS) {
+                _banned[p.orgId] = true;
+                emit AbandonmentAutoBan(p.orgId, _abandonmentCount[p.orgId]);
+            } else {
+                _cooldownUntil[p.orgId] = block.timestamp + COOLDOWN_DURATION;
+                emit CooldownApplied(p.orgId, _cooldownUntil[p.orgId]);
+            }
         } else if (outcome == Outcome.Fraudulent) {
             _banned[p.orgId] = true;
             reputation.updateDimension(p.orgId, "reliability", -int256(100));
@@ -151,6 +159,10 @@ contract CompletionRegistry is ICompletionRegistry, ReentrancyGuard {
 
     function isBanned(bytes32 orgId) external view returns (bool) {
         return _banned[orgId];
+    }
+
+    function abandonmentCount(bytes32 orgId) external view returns (uint256) {
+        return _abandonmentCount[orgId];
     }
 
     function projectCount() external view returns (uint256) {

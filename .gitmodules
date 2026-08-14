@@ -1,0 +1,6 @@
+[submodule "abundance-protocol/lib/forge-std"]
+	path = abundance-protocol/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "abundance-protocol/lib/openzeppelin-contracts"]
+	path = abundance-protocol/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
